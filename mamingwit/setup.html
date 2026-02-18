@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mamingwit Checker — Setup Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@600;700&family=Exo+2:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:#020b18;color:#8eafc4;font-family:'Exo 2',sans-serif;padding:40px 20px;min-height:100vh;
+    background-image:linear-gradient(rgba(0,245,255,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(0,245,255,0.03) 1px,transparent 1px);
+    background-size:40px 40px;}
+  .wrap{max-width:860px;margin:0 auto;}
+  .header{text-align:center;margin-bottom:40px;padding:40px;background:rgba(5,15,28,0.9);border:1px solid rgba(0,245,255,0.2);border-radius:6px;}
+  .logo{font-family:'Rajdhani',sans-serif;font-size:36px;font-weight:700;color:#00f5ff;letter-spacing:.2em;text-shadow:0 0 30px rgba(0,245,255,0.5);}
+  .sub{font-family:'Share Tech Mono',monospace;font-size:12px;color:#3d5a72;letter-spacing:.2em;margin-top:6px;}
+  h2{font-family:'Rajdhani',sans-serif;font-size:18px;font-weight:700;letter-spacing:.15em;color:#e8f4ff;margin-bottom:16px;
+    padding:12px 16px;background:rgba(0,245,255,0.06);border-left:3px solid #00f5ff;border-radius:0 3px 3px 0;}
+  .step-card{background:rgba(5,12,24,0.95);border:1px solid rgba(0,245,255,0.12);border-radius:4px;padding:24px;margin-bottom:20px;}
+  .step-num{font-family:'Share Tech Mono',monospace;font-size:10px;color:#00f5ff;letter-spacing:.2em;margin-bottom:8px;}
+  p{font-size:14px;line-height:1.7;margin-bottom:12px;color:#8eafc4;}
+  code{font-family:'Share Tech Mono',monospace;font-size:12px;background:rgba(0,0,0,0.5);padding:2px 8px;border:1px solid rgba(0,245,255,0.15);border-radius:3px;color:#00f5ff;}
+  pre{font-family:'Share Tech Mono',monospace;font-size:12px;background:rgba(0,0,0,0.6);padding:18px;border:1px solid rgba(0,245,255,0.12);border-radius:4px;color:#8eafc4;overflow-x:auto;line-height:1.6;margin:12px 0;}
+  pre .hl{color:#00e676;}
+  pre .kw{color:#00f5ff;}
+  ul{padding-left:20px;display:flex;flex-direction:column;gap:8px;font-size:14px;color:#8eafc4;list-style:none;margin:12px 0;}
+  ul li::before{content:'›';color:#00f5ff;margin-right:8px;}
+  .badge{display:inline-block;padding:3px 10px;border-radius:2px;font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:.1em;}
+  .green{background:rgba(0,230,118,.1);border:1px solid rgba(0,230,118,.3);color:#00e676;}
+  .red{background:rgba(255,23,68,.1);border:1px solid rgba(255,23,68,.3);color:#ff1744;}
+  .yellow{background:rgba(255,214,0,.1);border:1px solid rgba(255,214,0,.3);color:#ffd600;}
+  .file-tree{font-family:'Share Tech Mono',monospace;font-size:12px;line-height:2;background:rgba(0,0,0,0.5);padding:20px;border:1px solid rgba(0,245,255,0.12);border-radius:4px;color:#8eafc4;}
+  .file-tree .dir{color:#00f5ff;} .file-tree .file{color:#8eafc4;} .file-tree .comment{color:#3d5a72;}
+  .cta{text-align:center;margin-top:30px;padding:30px;background:linear-gradient(135deg,rgba(0,102,255,0.1),rgba(0,245,255,0.05));border:1px solid rgba(0,245,255,0.25);border-radius:6px;}
+  .cta-btn{display:inline-block;padding:14px 40px;background:linear-gradient(135deg,#00b8c0,#0066ff);color:#fff;font-family:'Rajdhani',sans-serif;font-weight:700;font-size:16px;letter-spacing:.15em;text-decoration:none;border-radius:4px;margin-top:16px;transition:all .2s;}
+  .cta-btn:hover{box-shadow:0 0 30px rgba(0,102,255,.5);transform:translateY(-1px);}
+  .note{background:rgba(255,214,0,.05);border:1px solid rgba(255,214,0,.25);border-radius:4px;padding:14px 18px;font-size:13px;color:#ffd600;margin:12px 0;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="header">
+    <div class="logo">MAMINGWIT CHECKER</div>
+    <div class="sub">SETUP & INSTALLATION GUIDE — PHISHING URL DETECTION SYSTEM</div>
+  </div>
+
+  <!-- REQUIREMENTS -->
+  <div class="step-card">
+    <div class="step-num">SYSTEM REQUIREMENTS</div>
+    <h2>Prerequisites</h2>
+    <ul>
+      <li>XAMPP (Apache + MySQL + PHP 8.0+) installed and running</li>
+      <li>PHP 8.0 or higher with MySQLi extension</li>
+      <li>Modern web browser (Chrome, Firefox, Edge, Safari)</li>
+      <li>Internet access for Google Fonts (or offline — fonts will fallback gracefully)</li>
+    </ul>
+  </div>
+
+  <!-- FILE STRUCTURE -->
+  <div class="step-card">
+    <div class="step-num">PROJECT STRUCTURE</div>
+    <h2>File Organization</h2>
+    <div class="file-tree">
+<span class="dir">mamingwit/</span>                    <span class="comment">← Project root (place in htdocs)</span>
+├── <span class="file">index.php</span>               <span class="comment">← Main dashboard interface</span>
+├── <span class="file">api.php</span>                 <span class="comment">← AJAX request handler</span>
+├── <span class="file">database.sql</span>            <span class="comment">← Database schema & seed data</span>
+├── <span class="dir">includes/</span>
+│   ├── <span class="file">db.php</span>              <span class="comment">← Database singleton class</span>
+│   └── <span class="file">analyzer.php</span>        <span class="comment">← URL analysis engine (15+ rules)</span>
+├── <span class="dir">css/</span>
+│   └── <span class="file">style.css</span>           <span class="comment">← SIEM dashboard theme</span>
+└── <span class="dir">js/</span>
+    └── <span class="file">app.js</span>              <span class="comment">← Frontend application logic</span>
+    </div>
+  </div>
+
+  <!-- STEP 1 -->
+  <div class="step-card">
+    <div class="step-num">STEP 01</div>
+    <h2>Place Files in XAMPP</h2>
+    <p>Copy the entire <code>mamingwit</code> folder into your XAMPP <code>htdocs</code> directory:</p>
+    <pre><span class="kw">Windows:</span>  C:\xampp\htdocs\mamingwit\
+<span class="kw">macOS:</span>    /Applications/XAMPP/htdocs/mamingwit/
+<span class="kw">Linux:</span>    /opt/lampp/htdocs/mamingwit/</pre>
+  </div>
+
+  <!-- STEP 2 -->
+  <div class="step-card">
+    <div class="step-num">STEP 02</div>
+    <h2>Start XAMPP Services</h2>
+    <p>Open the XAMPP Control Panel and start both services:</p>
+    <ul>
+      <li><span class="badge green">START</span> Apache (web server)</li>
+      <li><span class="badge green">START</span> MySQL (database)</li>
+    </ul>
+    <p>Verify both show green status indicators before proceeding.</p>
+  </div>
+
+  <!-- STEP 3 -->
+  <div class="step-card">
+    <div class="step-num">STEP 03</div>
+    <h2>Set Up the Database</h2>
+    <p>Navigate to <code>http://localhost/phpmyadmin</code> in your browser. Then:</p>
+    <ul>
+      <li>Click the <strong>SQL</strong> tab in phpMyAdmin</li>
+      <li>Open the <code>database.sql</code> file from the project</li>
+      <li>Paste the entire SQL content into the query box</li>
+      <li>Click <strong>Go</strong> to execute</li>
+    </ul>
+    <div class="note">
+      ⚠ This will create the database <code>mamingwit_db</code> with all required tables and seed data automatically.
+    </div>
+    <p><strong>Alternatively,</strong> use the Import tab: phpMyAdmin → Import → Choose <code>database.sql</code> → Go</p>
+  </div>
+
+  <!-- STEP 4 -->
+  <div class="step-card">
+    <div class="step-num">STEP 04 (Optional)</div>
+    <h2>Adjust Database Configuration</h2>
+    <p>If your MySQL uses a password or different port, edit <code>includes/db.php</code>:</p>
+    <pre><span class="kw">define</span>(<span class="hl">'DB_HOST'</span>, <span class="hl">'localhost'</span>);
+<span class="kw">define</span>(<span class="hl">'DB_USER'</span>, <span class="hl">'root'</span>);         <span class="comment">// ← your MySQL username</span>
+<span class="kw">define</span>(<span class="hl">'DB_PASS'</span>, <span class="hl">''</span>);            <span class="comment">// ← your MySQL password</span>
+<span class="kw">define</span>(<span class="hl">'DB_NAME'</span>, <span class="hl">'mamingwit_db'</span>);
+<span class="kw">define</span>(<span class="hl">'DB_PORT'</span>, <span class="hl">3306</span>);</pre>
+  </div>
+
+  <!-- STEP 5 -->
+  <div class="step-card">
+    <div class="step-num">STEP 05</div>
+    <h2>Access the Application</h2>
+    <p>Open your browser and navigate to:</p>
+    <pre><span class="hl">http://localhost/mamingwit/</span></pre>
+    <p>The MAMINGWIT CHECKER dashboard should load with the SIEM-style interface.</p>
+  </div>
+
+  <!-- DATABASE TABLES -->
+  <div class="step-card">
+    <div class="step-num">DATABASE REFERENCE</div>
+    <h2>Tables Created</h2>
+    <ul>
+      <li><code>url_checks</code> — Stores all scanned URLs, risk scores, and analysis results</li>
+      <li><code>community_reports</code> — User-submitted phishing reports with deduplication</li>
+      <li><code>blacklist</code> — Known phishing domain blacklist (seeded with 10 examples)</li>
+      <li><code>phishing_keywords</code> — Weighted keyword library (25 keywords pre-seeded)</li>
+    </ul>
+  </div>
+
+  <!-- FEATURES -->
+  <div class="step-card">
+    <div class="step-num">FEATURES OVERVIEW</div>
+    <h2>System Capabilities</h2>
+    <ul>
+      <li><strong>15+ Detection Rules</strong> — HTTPS, IP, length, keywords, TLD, brand spoofing, redirects, and more</li>
+      <li><strong>Visual Risk Meter</strong> — Animated SVG arc gauge with Low/Medium/High classification</li>
+      <li><strong>URL History</strong> — MySQL-backed scan log with repeated URL detection and warnings</li>
+      <li><strong>Community Reports</strong> — Crowd-sourced phishing reports with 24-hour IP deduplication</li>
+      <li><strong>Phishing vs Legit Comparison</strong> — Educational reference panel for users</li>
+      <li><strong>Technical Breakdown Table</strong> — Every rule evaluated with pass/fail/score</li>
+      <li><strong>Dashboard Statistics</strong> — Live counters for total scans, high-risk, reports, repeated URLs</li>
+      <li><strong>Responsive Design</strong> — Works on desktop, tablet, and mobile devices</li>
+      <li><strong>SIEM-Inspired UI</strong> — Dark theme with cybersecurity professional aesthetics</li>
+    </ul>
+  </div>
+
+  <div class="cta">
+    <div class="logo" style="font-size:24px">READY TO DEPLOY</div>
+    <p style="margin-top:12px;font-size:13px">All files are configured. Start XAMPP, import the SQL, and launch.</p>
+    <a href="index.php" class="cta-btn">LAUNCH MAMINGWIT CHECKER →</a>
+  </div>
+
+</div>
+</body>
+</html>
